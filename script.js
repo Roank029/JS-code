@@ -1,27 +1,22 @@
+let calculate = document.querySelector('form')
+calculate.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-const buttons = document.querySelectorAll('.button');
-const body = document.querySelector('body');
 
-buttons.forEach(function (button) {
-  console.log(button);
-  button.addEventListener('click', function (e) {
-    console.log(e);
-    console.log(e.target);
-    if (e.target.id === 'grey') {
-      body.style.backgroundColor = e.target.id;
+    const height = parseInt(document.querySelector("#height").value);
+    const weight = parseInt(document.querySelector("#weight").value);
+    const results = document.querySelector("#results");
+
+    if (height==="" || height < 0 || isNaN(height)) {
+        results.innerHTML = `Plese Enter Right Height ${height}`
     }
-    if (e.target.id === 'white') {
-      body.style.backgroundColor = e.target.id;
+    else if (weight==="" || weight < 0 || isNaN(weight)) {
+        results.innerHTML = `Plese Enter Right weight ${weight}`
     }
-    if (e.target.id === 'blue') {
-      body.style.backgroundColor = e.target.id;
+    else{
+         const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+        results.innerHTML = `<span>${bmi}</span>`;
     }
-    if (e.target.id === 'yellow') {
-      body.style.backgroundColor = e.target.id;
-    }
-    
-  });
 });
-
 
 
